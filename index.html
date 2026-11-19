@@ -120,6 +120,7 @@
   .entry.waiting{border-color:#e5d8ff;background:#fcfaff}
   .note-line{margin-top:8px;font-size:12.5px;background:#faf8ff;border:1px dashed #e5d8ff;color:#5b21b6;border-radius:10px;padding:8px 10px;line-height:1.45}
   .cal-waiting{margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--purple);background:var(--purple-soft);border-radius:12px;padding:8px 10px}
+  .cal-waiting{font-size:11.5px}
   .cal-waiting button{background:#fff;border:1px solid #e5d8ff;color:var(--purple);border-radius:9px;padding:5px 9px;font-size:11.5px;font-weight:800}
   .field .sub-hint{font-size:11.5px;color:var(--muted);margin-top:4px}
   .meta{font-size:12.5px;color:var(--muted);margin-top:6px;display:flex;gap:8px;flex-wrap:wrap}
@@ -177,10 +178,22 @@
     .cell{min-height:82px}
     .chip-mini{font-size:11px}
   }
+  @media (max-width:520px){
+    /* 좁은 화면에서는 글자 칩 대신 색점으로: 달력이 훨씬 깔끔해짐 */
+    .cell .chips{flex-direction:row;flex-wrap:wrap;gap:3px}
+    .chip-mini{width:9px;height:9px;padding:0;font-size:0;line-height:0;border-radius:50%;overflow:hidden}
+    .chip-mini.done{background:var(--green)}
+    .chip-mini.ing{background:var(--blue)}
+    .chip-mini.near{background:var(--orange)}
+    .chip-mini.soon,.chip-mini.over{background:var(--red)}
+    .chip-mini.waiting{background:var(--purple)}
+    .cell .more{font-size:9px;padding-left:0}
+  }
   @media (max-width:420px){
     .card{padding:13px;border-radius:16px}
-    .cell{min-height:58px}
+    .cell{min-height:54px}
     .cell .num{font-size:10px}
+    .top h1{font-size:17px}
   }
 </style>
 </head>
