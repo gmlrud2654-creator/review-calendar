@@ -35,9 +35,9 @@
   .top .sub{margin:3px 0 0;font-size:12px;color:var(--muted)}
   .top-right{display:flex;gap:8px}
   /* ---------- cards ---------- */
-  .layout{display:grid;gap:14px}
-  .col-left,.col-right{display:grid;gap:14px;align-content:start}
-  .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;border:1px solid #eef1f7}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+  .col-left,.col-right{display:grid;gap:14px;align-content:start;min-width:0}
+  .card{min-width:0;width:100%;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;border:1px solid #eef1f7}
   .card-head{display:flex;align-items:baseline;gap:8px;margin-bottom:10px;flex-wrap:wrap}
   .card-head h2{margin:0;font-size:16px}
   .hint{font-size:12px;color:var(--muted)}
@@ -57,17 +57,17 @@
   .cal-nav{display:flex;align-items:center;gap:10px}
   .cal-nav h2{margin:0;font-size:17px;min-width:112px;text-align:center}
   .cal-actions{display:flex;gap:8px}
-  .cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:4px}
+  .cal-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-bottom:4px}
   .cal-week span{text-align:center;font-size:11px;color:var(--muted);font-weight:700;padding:2px 0}
   .cal-week .sun{color:#e0565b}
-  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-  .cell{min-height:66px;border-radius:12px;background:#fafbfe;border:1px solid #f0f2f8;padding:4px;display:flex;flex-direction:column;gap:3px;overflow:hidden}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+  .cell{min-width:0;min-height:66px;border-radius:12px;background:#fafbfe;border:1px solid #f0f2f8;padding:4px;display:flex;flex-direction:column;gap:3px;overflow:hidden}
   .cell.empty{background:transparent;border:0}
   .cell.today{background:#eef4ff;border-color:#bcd0ff}
   .cell.sel{outline:2px solid var(--blue)}
   .cell .num{font-size:11px;color:var(--muted);font-weight:700}
   .cell.today .num{color:var(--blue)}
-  .cell .chips{display:flex;flex-direction:column;gap:2px}
+  .cell .chips{display:flex;flex-direction:column;gap:2px;min-width:0}
   .chip-mini{display:block;width:100%;text-align:left;border:0;border-radius:6px;font-size:10px;line-height:1.25;padding:2px 4px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .chip-mini.done{background:var(--green-soft);color:var(--green)}
   .chip-mini.ing{background:var(--blue-soft);color:var(--blue)}
@@ -93,18 +93,18 @@
   .dday-sub{display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .empty-note{font-size:13px;color:var(--muted);padding:10px 2px}
   /* ---------- filters ---------- */
-  .list-head{display:flex;gap:8px;align-items:center:;justify-content:space-between;flex-wrap:wrap}
+  .list-head{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;min-width:0}
   .filters{display:flex;gap:6px;flex-wrap:wrap}
   .chip{background:#f4f6fb;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;color:var(--muted)}
   .chip b{font-weight:800;margin-left:3px;opacity:.8}
   .chip.active{background:var(--blue);border-color:var(--blue);color:#fff}
-  #search{flex:1;min-width:150px;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:13.5px;background:#fbfcff}
+  #search{flex:1 1 150px;min-width:0;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:13.5px;background:#fbfcff}
   .date-filter{margin-top:10px;font-size:12.5px;color:var(--blue);background:var(--blue-soft);border-radius:10px;padding:7px 10px;display:flex;justify-content:space-between;align-items:center}
   .date-filter button{background:none;border:0;color:var(--blue);font-weight:800;font-size:12px}
   .hidden{display:none!important}
   /* ---------- entry cards ---------- */
   .entries{display:grid;gap:10px;margin-top:12px}
-  .entry{border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:#fff}
+  .entry{min-width:0;border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:#fff;overflow-wrap:anywhere}
   .entry.done{background:#fbfdfb;border-color:#d9efe0}
   .entry-top{display:flex;align-items:flex-start;gap:8px}
   .entry-title{font-size:15.5px;font-weight:800;margin:0;line-height:1.35;flex:1;letter-spacing:-.2px}
