@@ -24,7 +24,7 @@
 
 ```bash
 pip install quickjs
-python3 test/core.test.py
+python3 core.test.py
 ```
 
 `index.html`의 `RC-CORE` 블록(파서 + 3-way 병합)을 그대로 뽑아 실제 안내문 4종으로 검증합니다.

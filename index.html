@@ -531,7 +531,9 @@ function extractType(text){
 
 /* ---------- 미션 체크리스트 ---------- */
 function extractMissions(text){
-  var lines = text.split('\n').map(function(l){ return l.trim(); }).filter(Boolean);
+  /* 줄바꿈이 사라진 복사본(카톡·문자 통째 복사)도 처리: 번호 앞에서 줄을 나눔 */
+  var normalized = String(text || '').replace(/[ \t]+(?=(?:\d{1,2}[).]|[①-⑩])\s?)/g, '\n');
+  var lines = normalized.split('\n').map(function(l){ return l.trim(); }).filter(Boolean);
   var items = [];
   /* ▷도서명 : … 같은 이름표 줄은 미션이 아님 */
   var fieldRe = /^[▷▶►◈◆]\s*(도서명|제목|마감일|마감|활동\s*기간|활동기간|회신\s*링크|미션|신청|접수|문의|일정)/;
@@ -561,6 +563,10 @@ function extractMissions(text){
   var out = [];
   for(var k=0;k<items.length;k++){
     var v = items[k].replace(/\s+/g, ' ').replace(/[.,;:]+$/, '').trim();
+    v = v.replace(/\s*https?:\/\/\S+.*$/, '');          /* 미션 뒤에 붙은 링크 잘라냄 */
+    v = v.split(/\s*(?:마감|마감일)\s*[:：]/)[0];          /* 뒤에 붙은 마감 안내 잘라냄 */
+    v = v.split(/\s*감사합니다/)[0];
+    v = v.trim();
     if(v.length >= 2 && out.indexOf(v) < 0) out.push(v.slice(0, 120));
   }
   return out;
